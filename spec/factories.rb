@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :motd do
-    message "MyString"
-    author "MyString"
+    message "This is a quote"
+    author "This is an author"
   end
 end
