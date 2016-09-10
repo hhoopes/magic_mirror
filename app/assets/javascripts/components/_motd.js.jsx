@@ -1,25 +1,32 @@
 var Motd = React.createClass({
+  checkForNextMotd: function() {
+    $.getJSON('/api/v1/motds/current', (response) => {
+      attr = response.data.attributes
+      this.setState({
+        author: attr.author,
+        message: attr.message
+      });
+    }.bind(this));
+  },
+
   getInitialState() {
-    return { motds: [] }
-  },
-  componentDidMount() {
-    $.getJSON('/api/v1/motds/current', (response) => { this.setState({ motds: response }) });
+    return {
+      author: '',
+      message: ''
+    };
   },
 
-  render() {
-    var motds = this.state.motds.map(function(motd) {
-      return (
-        <div className='motd'>
-          <h3>{motd.message}</h3>
-          <h3>— {motd.author}</h3>
-        </div>
-      )
-    });
+  componentDidMount: function() {
+    this.checkForNextMotd();
+    setInterval(this.checkForNextMotd, this.props.pollInterval);
+  },
 
+  render: function() {
     return (
-      <div>
-        <h1>{motds}</h1>
-      </div>
+    <div className='motd'>
+      <h3>{this.state.message}</h3>
+      <h3>— {this.state.author}</h3>
+    </div>
     )
   }
 });

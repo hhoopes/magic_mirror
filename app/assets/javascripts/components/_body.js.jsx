@@ -2,7 +2,8 @@ var Body = React.createClass({
   render () {
     return (
       <div>
-        <Motd />
+        <Motd pollInterval={5000}/>
+
       </div>
     )
   }

@@ -4,13 +4,13 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
-gem 'active_model_serializers', '~> 0.10.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'pg'
 gem 'responders', '~> 2.0'
 gem 'react-rails'
+gem 'active_model_serializers', '0.10.0.rc4'
 
 group :development, :test do
   gem 'pry'
@@ -32,4 +32,6 @@ group :test do
   gem 'simplecov', require: false
   gem 'capybara-webkit'
   gem 'launchy'
+  gem 'vcr'
+  gem 'webmock'
 end
